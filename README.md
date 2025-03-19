@@ -106,8 +106,8 @@ To get the project up and running locally, follow these steps:
 
 4. Create a .env.local file in the root directory and add the following environment variables:
    ```bash
-   NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
-   NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+   SUPABASE_URL=your_supabase_url
+   SUPABASE_ANON_KEY=your_supabase_anon_key
 
 5. Start the development server:
 
