@@ -8,6 +8,7 @@ export type JobFormData = {
   company: string;
   link: string;
   seniority: string;
+  workMod: string;
 };
 
 export async function createJob(formData: JobFormData) {
@@ -21,6 +22,7 @@ export async function createJob(formData: JobFormData) {
           company: formData.company.toUpperCase(),
           link: formData.link,
           seniority: formData.seniority,
+          workMod: formData.workMod,
         },
       ])
       .select();

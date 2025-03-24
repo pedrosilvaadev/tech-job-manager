@@ -9,6 +9,7 @@ import {
   Calendar,
   Crown,
   ExternalLink,
+  MapPin,
   Trash2,
 } from "lucide-react";
 import { Job } from "@/lib/types";
@@ -67,6 +68,14 @@ export function JobList({
                         <span className="mr-4 uppercase">{job.company}</span>
                         <Briefcase className="h-4 w-4 mr-1" />
                         <span className="mr-4 uppercase">{job.area}</span>
+                        {job.workMod && (
+                          <>
+                            <MapPin className="h-4 w-4 mr-1" />
+                            <span className="mr-4 uppercase">
+                              {job.workMod}
+                            </span>
+                          </>
+                        )}
                         <Crown className="h-4 w-4 mr-1" />
                         <span className="uppercase">{job.seniority}</span>
                         <Button variant="outline" className="ml-4" asChild>

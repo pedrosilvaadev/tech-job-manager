@@ -23,6 +23,9 @@ const formSchema = z.object({
   seniority: z.string({
     required_error: "Por favor selecione um nível de senioridade.",
   }),
+  workMod: z.string({
+    required_error: "Por favor selecione um modelo de trabalho.",
+  }),
 });
 
 export const useJobs = () => {
@@ -33,15 +36,18 @@ export const useJobs = () => {
   const [loadingDelete, setLoadingDelete] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  const defaultValues = {
+    title: "",
+    area: "Frontend",
+    company: "",
+    link: "",
+    seniority: "Estágio",
+    workMod: "Remoto",
+  };
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      title: "",
-      area: "Frontend",
-      company: "",
-      link: "",
-      seniority: "Estágio",
-    },
+    defaultValues: defaultValues,
   });
   async function loadJobs() {
     try {
@@ -72,13 +78,7 @@ export const useJobs = () => {
           title: "Vaga cadastrada com sucesso!",
           description: "A vaga foi adicionada ao banco de dados.",
         });
-        form.reset({
-          title: "",
-          area: "Frontend",
-          company: "",
-          link: "",
-          seniority: "Estágio",
-        });
+        form.reset(defaultValues);
         loadJobs();
       } else {
         toast({

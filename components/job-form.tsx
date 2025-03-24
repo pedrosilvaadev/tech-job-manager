@@ -32,6 +32,7 @@ const jobAreas = [
 ];
 
 const seniorityLevels = ["Estágio", "Júnior", "Pleno", "Sênior", "Tech Lead"];
+const workMods = ["Remoto", "Presencial", "Hibrido"];
 
 export function JobForm({
   form,
@@ -57,9 +58,7 @@ export function JobForm({
                   {...field}
                 />
               </FormControl>
-              <FormDescription>
-                Digite o título da vaga oferecida.
-              </FormDescription>
+              <FormDescription>Digite o título oferecida.</FormDescription>
               <FormMessage />
             </FormItem>
           )}
@@ -89,7 +88,7 @@ export function JobForm({
                     ))}
                   </SelectContent>
                 </Select>
-                <FormDescription>Selecione a área da vaga.</FormDescription>
+                <FormDescription>Selecione a área.</FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -119,13 +118,41 @@ export function JobForm({
                   </SelectContent>
                 </Select>
                 <FormDescription>
-                  Selecione o nível de senioridade da vaga.
+                  Selecione o nível de senioridade.
                 </FormDescription>
                 <FormMessage />
               </FormItem>
             )}
           />
         </div>
+
+        <FormField
+          control={form.control}
+          name="workMod"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Modo de Trabalho</FormLabel>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Selecione o modo de trabalho" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  {workMods.map((work) => (
+                    <SelectItem key={work} value={work}>
+                      {work}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              <FormDescription>
+                Selecione o modo de trabalho da vaga.
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
         <FormField
           control={form.control}
@@ -136,9 +163,7 @@ export function JobForm({
               <FormControl>
                 <Input placeholder="Ex: Tech Solutions Inc." {...field} />
               </FormControl>
-              <FormDescription>
-                Digite o nome da empresa que está oferecendo a vaga.
-              </FormDescription>
+              <FormDescription>Digite o nome da empresa.</FormDescription>
               <FormMessage />
             </FormItem>
           )}
@@ -153,9 +178,7 @@ export function JobForm({
               <FormControl>
                 <Input placeholder="https://exemplo.com/vaga" {...field} />
               </FormControl>
-              <FormDescription>
-                Insira o link para a página da vaga.
-              </FormDescription>
+              <FormDescription>Insira o link.</FormDescription>
               <FormMessage />
             </FormItem>
           )}
